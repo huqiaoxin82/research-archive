@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'https://research-archive.pages.dev/'
 languageCode = 'zh-CN'
 title = '胡巧信的技术研究'
 theme = 'PaperMod'
