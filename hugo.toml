@@ -1,0 +1,122 @@
+baseURL = 'https://huqiaoxin82.github.io/research-archive/'
+languageCode = 'zh-CN'
+title = '胡巧信的技术研究'
+theme = 'PaperMod'
+
+[params]
+  author = '胡巧信'
+  description = '技术研究、项目调研与实践经验分享'
+  defaultTheme = 'dark'
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = true
+  tocopen = false
+  
+  [params.assets]
+    favicon = '/favicon.ico'
+    favicon16x16 = '/favicon-16x16.png'
+    favicon32x32 = '/favicon-32x32.png'
+    apple_touch_icon = '/apple-touch-icon.png'
+    safari_pinned_tab = '/safari-pinned-tab.svg'
+
+  [params.label]
+    text = '胡巧信的技术研究'
+    icon = ''
+    iconHeight = 24
+
+  [params.profileMode]
+    enabled = true
+    title = '胡巧信的技术研究'
+    subtitle = '技术研究、项目调研与实践经验分享'
+    imageUrl = ''
+    imageWidth = 120
+    imageHeight = 120
+    imageTitle = ''
+    
+    [[params.profileMode.buttons]]
+      name = '文章'
+      url = 'posts'
+    [[params.profileMode.buttons]]
+      name = '标签'
+      url = 'tags'
+    [[params.profileMode.buttons]]
+      name = '归档'
+      url = 'archives'
+
+  [params.homeInfoParams]
+    Title = '胡巧信的技术研究'
+    Content = '技术研究、项目调研与实践经验分享'
+
+  [[params.socialIcons]]
+    name = 'github'
+    url = 'https://github.com/huqiaoxin82'
+
+[params.search]
+  enabled = true
+
+[languages]
+  [languages.zh]
+    languageName = '中文'
+    weight = 1
+    
+[menu]
+  [[menu.main]]
+    identifier = 'posts'
+    name = '文章'
+    url = '/posts/'
+    weight = 10
+  [[menu.main]]
+    identifier = 'archives'
+    name = '归档'
+    url = '/archives/'
+    weight = 20
+  [[menu.main]]
+    identifier = 'tags'
+    name = '标签'
+    url = '/tags/'
+    weight = 30
+  [[menu.main]]
+    identifier = 'search'
+    name = '搜索'
+    url = '/search/'
+    weight = 40
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[markup]
+  [markup.highlight]
+    style = 'monokai'
+    lineNos = true
+    codeFences = true
+    guessSyntax = true
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
