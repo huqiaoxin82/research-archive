@@ -1,0 +1,62 @@
+# Site settings
+title: "研究资料归档"
+description: "胡巧信的个人研究笔记与调研报告"
+author: "胡巧信"
+email: "huqiaoxin82@gmail.com"
+
+# Theme settings
+theme: jekyll-theme-cayman
+# 备选主题: jekyll-theme-minimal, jekyll-theme-slate, jekyll-theme-hacker
+
+# GitHub Pages settings
+repository: huqiaoxin82/research-archive
+github_username: huqiaoxin82
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Navigation
+nav:
+  - title: "首页"
+    url: "/"
+  - title: "研究报告"
+    url: "/research/"
+
+# Collections
+collections:
+  research:
+    output: true
+    permalink: /:collection/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: "default"
+      author: "胡巧信"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - scripts/
+  - README.md
+
+# Timezone
+timezone: Asia/Shanghai
