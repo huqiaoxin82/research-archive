@@ -41,14 +41,7 @@ jobs:
           hugo-version: '0.140.2'
           extended: true
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
-      - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
-
-      - name: Build with Hugo
+      - name: Build for GitHub Pages
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
@@ -57,7 +50,7 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "https://huqiaoxin82.github.io/research-archive/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
