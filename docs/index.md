@@ -36,6 +36,11 @@ title: 研究资料归档
   <span class="tag">#{{ tag }}</span>
 {% endfor %}
 
+## 📚 使用指南
+
+- [如何添加新研究报告](./guide.html)
+- [项目设置说明](./SETUP.html)
+
 ## 🔗 快速链接
 
 - [GitHub 仓库](https://github.com/huqiaoxin82/research-archive)
