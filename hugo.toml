@@ -1,4 +1,4 @@
-baseURL = 'https://huqiaoxin82.github.io/research-archive/'
+baseURL = '/'
 languageCode = 'zh-CN'
 title = '胡巧信的技术研究'
 theme = 'PaperMod'
