@@ -1,0 +1,76 @@
+{{ define "main" }}
+{{ $password := .Params.password }}
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    <div class="post-meta">
+      <span>{{ .Date.Format "2006-01-02" }}</span>
+      {{ if .Params.categories }}
+        <span class="post-categories">
+          {{ range .Params.categories }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ end }}
+        </span>
+      {{ end }}
+    </div>
+  </header>
+
+  {{ if $password }}
+  <!-- 密码保护区域 -->
+  <div id="password-gate" style="padding: 40px; text-align: center; background: var(--code-bg); border-radius: 8px; margin: 20px 0;">
+    <p style="margin-bottom: 20px;">🔒 这是一篇私密文章，需要密码访问</p>
+    <input type="password" id="pwd-input" placeholder="请输入密码" style="padding: 10px 15px; border: 1px solid var(--border); border-radius: 4px; background: var(--entry); color: var(--primary); font-size: 16px;">
+    <button onclick="checkPassword()" style="padding: 10px 20px; margin-left: 10px; background: var(--primary); color: var(--theme); border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">解锁</button>
+    <p id="pwd-error" style="color: #e74c3c; margin-top: 15px; display: none;">密码错误</p>
+  </div>
+  
+  <div id="protected-content" style="display: none;">
+    <div class="post-content">
+      {{ $encoded := .Content | base64Encode }}
+      <div data-encoded="{{ $encoded }}" data-password="{{ $password }}"></div>
+      <div id="decoded-content"></div>
+    </div>
+  </div>
+
+  <script>
+  function checkPassword() {
+    const input = document.getElementById('pwd-input').value;
+    const correctPwd = '{{ $password }}';
+    
+    if (input === correctPwd) {
+      document.getElementById('password-gate').style.display = 'none';
+      document.getElementById('protected-content').style.display = 'block';
+      
+      // 解码并显示内容
+      const encodedDiv = document.querySelector('[data-encoded]');
+      const encoded = encodedDiv.getAttribute('data-encoded');
+      try {
+        const decoded = atob(encoded);
+        document.getElementById('decoded-content').innerHTML = decoded;
+      } catch (e) {
+        document.getElementById('decoded-content').innerHTML = '<p style="color: #e74c3c;">内容解码失败</p>';
+      }
+    } else {
+      document.getElementById('pwd-error').style.display = 'block';
+    }
+  }
+  
+  // 支持回车键提交
+  document.getElementById('pwd-input')?.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') checkPassword();
+  });
+  </script>
+  {{ else }}
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+  {{ end }}
+
+  <footer class="post-footer">
+    {{ if .Params.tags }}
+    <ul class="post-tags">
+      {{ range .Params.tags }}<li><a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a></li>{{ end }}
+    </ul>
+    {{ end }}
+  </footer>
+</article>
+{{ end }}
